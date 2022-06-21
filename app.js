@@ -22,7 +22,7 @@ function extrairHtml(cidade) {
 
 
   roteiros.forEach((roteiro, index) => {
-    const roteiroArray = roteiro.split(`;`);
+    let roteiroArray = roteiro.split(`;`);
     if (index === 0) return;
     else if (index === 1) {
       // Exibe a qntd de locais do roteiro A
@@ -32,6 +32,7 @@ function extrairHtml(cidade) {
       // Verifica se e o centro de SP
       if (roteiroArray[0].includes(`Centro`) && window.cidadeNome === `São Paulo`) {
         // Se o local nao for a primeira posicao, exibimos na tela os locais do centro
+        roteiroArray = roteiro.replace('Centro<br>','Centro<br>;').split(';');
         roteiroArray.forEach((local, i) => {
           if (i !== 0) {
             console.log('c');
